@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layout_marginTop="10dp"
+
+    android:gravity="center"
+    android:textAlignment="center"
+    >
+
+    <TextView
+        android:id="@+id/flashcard_question"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:text="2 + 2 = "
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="15dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:background="@drawable/card_background"
+        android:textColor="#882112"
+        />
+
+    <RelativeLayout
+        android:id="@+id/flashcard_answers"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@id/flashcard_question"
+        android:layout_marginTop="100dp"
+
+
+
+        >
+
+
+        <TextView
+            android:id="@+id/flashcard_answer"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="4"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:background="#555555"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/flashcard_answer2"
+            android:layout_below="@id/flashcard_answer"
+
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="22"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:background="#555555"
+            android:textColor="@color/white"
+            android:layout_marginVertical="20dp"
+            />
+
+
+
+        <TextView
+            android:id="@+id/flashcard_answer3"
+            android:layout_below="@id/flashcard_answer2"
+
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="2"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:background="#555555"
+            android:textColor="@color/white"
+            />
+
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_below="@id/flashcard_answers"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/toggle_choices_visibility"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_marginVertical="40dp"
+        android:layout_marginHorizontal="80pt"
+
+
+        />
+
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Hello World!"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/editText"-->
+<!--        android:layout_width="300"-->
+<!--        android:layout_height="50"-->
+<!--        android:hint="@string/app_name"-->
+<!--        android:autofillHints="Enter your name"-->
+<!--        android:inputType="text"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.414"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.32" />-->
+
+</RelativeLayout>
