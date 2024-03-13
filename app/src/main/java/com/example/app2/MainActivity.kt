@@ -21,13 +21,18 @@ class MainActivity : AppCompatActivity() {
         val flashcard_answer3 = findViewById<View>(R.id.flashcard_answer3)
 
         val toggleVisibilityButton = findViewById<View>(R.id.toggle_choices_visibility)
+        val toggleVisibilityIsOffButton = findViewById<View>(R.id.toggle_choices_visibility_is_off)
 
         toggleVisibilityButton.setOnClickListener{
-            if (flashcard_answers.visibility == View.VISIBLE)
-                flashcard_answers.visibility = View.INVISIBLE
-            else
-                flashcard_answers.visibility = View.VISIBLE
+            toggleVisibilityButton.visibility  = View.INVISIBLE
+            toggleVisibilityIsOffButton.visibility = View.VISIBLE
+            flashcard_answers.visibility = View.INVISIBLE
+        }
 
+        toggleVisibilityIsOffButton.setOnClickListener{
+            toggleVisibilityIsOffButton.visibility = View.INVISIBLE
+            toggleVisibilityButton.visibility = View.VISIBLE
+            flashcard_answers.visibility = View.VISIBLE
         }
 
 

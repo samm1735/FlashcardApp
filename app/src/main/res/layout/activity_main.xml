@@ -15,7 +15,7 @@
         android:id="@+id/flashcard_question"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:text="2 + 2 = "
+        android:text="2 + 2 = ? "
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:gravity="center"
@@ -28,9 +28,10 @@
     <RelativeLayout
         android:id="@+id/flashcard_answers"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
         android:layout_below="@id/flashcard_question"
-        android:layout_marginTop="100dp"
+        android:layout_marginVertical="50dp"
+
 
 
 
@@ -95,9 +96,22 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:id="@+id/toggle_choices_visibility"
-        android:src="@drawable/ic_launcher_foreground"
-        android:layout_marginVertical="40dp"
+        android:src="@drawable/iconmonstr_eye_off_lined"
+        android:layout_marginVertical="20dp"
         android:layout_marginHorizontal="80pt"
+
+
+        />
+
+    <ImageView
+        android:layout_below="@id/flashcard_answers"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/toggle_choices_visibility_is_off"
+        android:src="@drawable/iconmonstr_eye_lined"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="80pt"
+        android:visibility="invisible"
 
 
         />
