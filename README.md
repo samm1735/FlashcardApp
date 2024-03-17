@@ -7,9 +7,20 @@
 An Android app for flashcards. Lab 1 in the "App Mobile" class @Universite Espoir de la Calvary Chapel.
 
 ### App Walk-though
-`TODO://` Add the URL to your animated app walk-though `gif` in the image tag below. Make sure the gif actually renders and animates when viewing this README. (☝️ Remove this paragraph after after adding gif)
 
+#### REQUIRED TASKS
+
+##### Showing the answer after clicking on the question
 <img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240317_172241.gif" width=200><br>
+
+#### OPTIONAL TASKS
+
+##### Added a toggle button to show/hide the answers
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240317_170121.gif" width=200><br>
+
+##### Changed the answers background to show when they're correct or not
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240317_170317.gif" width=200><br>
+
 
 ## Required
 - [x] Create New Project in Android Studio
