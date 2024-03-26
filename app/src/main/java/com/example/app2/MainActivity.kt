@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import com.google.android.material.snackbar.Snackbar
 
 
 class MainActivity : AppCompatActivity() {
@@ -50,6 +51,10 @@ class MainActivity : AppCompatActivity() {
 //                Ajout sur l'écran de la nouvelle question et de sa réponse
                 flashcard_question.text = new_card_question
                 flashcard_answer.text = new_card_answer_1
+
+//                Affichage d'un snackbar pour donner du feeback a l'utilisateur
+                Snackbar.make(flashcard_question, "Card created succesfully", Snackbar.LENGTH_SHORT).show()
+
 
                 // Log the value of the strings for easier debugging
                 Log.i("MainActivity", "string1: $new_card_question")
