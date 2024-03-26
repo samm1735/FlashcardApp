@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity() {
             toggleVisibilityButton.visibility = View.VISIBLE
             flashcard_answers.visibility = View.VISIBLE
         }
-
-
+//
+//
         flashcard_answer.setOnClickListener {
             flashcard_answer.setBackgroundColor(getColor(R.color.green))
 
