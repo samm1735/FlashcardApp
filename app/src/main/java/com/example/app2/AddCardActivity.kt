@@ -24,6 +24,18 @@ class AddCardActivity : AppCompatActivity() {
         val add_card_question_field = findViewById<EditText>(R.id.add_card_question_field)
 
 
+//        Intent's variables
+        val edit_card_question = intent.getStringExtra("edit_card_question")
+        val edit_card_answer_1 = intent.getStringExtra("edit_card_answer_1")
+
+
+//        Setting the text on the textfields if the user is trying to edit
+
+        if (edit_card_question != null){
+            add_card_question_field.setText(edit_card_question)
+            add_card_answer1_field.setText(edit_card_answer_1)
+        }
+
 
         cancel_card_button.setOnClickListener{
             val cancelIntent = Intent(this, MainActivity::class.java)
@@ -39,8 +51,7 @@ class AddCardActivity : AppCompatActivity() {
 //            val saveCardIntent = Intent(this, MainActivity::class.java)
 
             val saveCardIntent = Intent()
-            val s = add_card_question_field.text.toString()
-            val p = add_card_answer1_field.text.toString()
+
 
             saveCardIntent.putExtra("new_card_question", add_card_question_field.text.toString())
             saveCardIntent.putExtra("new_card_answer_1", add_card_answer1_field.text.toString())
