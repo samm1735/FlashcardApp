@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 
 
@@ -37,6 +38,9 @@ class AddCardActivity : AppCompatActivity() {
         }
 
 
+
+
+
         cancel_card_button.setOnClickListener{
             val cancelIntent = Intent(this, MainActivity::class.java)
             startActivity(cancelIntent)
@@ -50,17 +54,26 @@ class AddCardActivity : AppCompatActivity() {
         save_card_button.setOnClickListener{
 //            val saveCardIntent = Intent(this, MainActivity::class.java)
 
-            val saveCardIntent = Intent()
+            if(add_card_question_field.text.toString().isEmpty() || add_card_answer1_field.text.toString().isEmpty()){
+//                If either of the EditText views aren't populated
+
+                Toast.makeText(applicationContext, "Fields can't be empty", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                val saveCardIntent = Intent()
 
 
-            saveCardIntent.putExtra("new_card_question", add_card_question_field.text.toString())
-            saveCardIntent.putExtra("new_card_answer_1", add_card_answer1_field.text.toString())
+                saveCardIntent.putExtra("new_card_question", add_card_question_field.text.toString())
+                saveCardIntent.putExtra("new_card_answer_1", add_card_answer1_field.text.toString())
 
 //            resultLauncher.launch(saveCardIntent)
 
-            setResult(RESULT_OK, saveCardIntent)
+                setResult(RESULT_OK, saveCardIntent)
 
-            finish()
+                finish()
+            }
+
+
 
         }
 
