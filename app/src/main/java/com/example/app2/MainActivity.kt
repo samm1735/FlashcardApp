@@ -1,6 +1,7 @@
 package com.example.app2
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,13 +14,65 @@ import com.google.android.material.snackbar.Snackbar
 
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var flashcardDatabase: FlashcardDatabase
+
+    var allFlashcards = mutableListOf<Flashcard>()
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        flashcardDatabase = FlashcardDatabase(this)
+
+        allFlashcards = flashcardDatabase.getAllCards().toMutableList()
+
+        var currentCardDisplayedIndex: Int = 0
+
+        if (allFlashcards.size > 0) {
+            findViewById<TextView>(R.id.flashcard_question).text = allFlashcards[currentCardDisplayedIndex].question
+            findViewById<TextView>(R.id.flashcard_answer).text = allFlashcards[currentCardDisplayedIndex].answer
+        }
+
+
+
         val flashcard_question = findViewById<TextView>(R.id.flashcard_question)
 
         val flashcard_answer = findViewById<TextView>(R.id.flashcard_answer)
+
+        val next_card_button = findViewById<View>(R.id.next_card_button)
+
+        next_card_button.setOnClickListener {
+            // don't try to go to next card if you have no cards to begin with
+            if (allFlashcards.size == 0) {
+                // return here, so that the rest of the code in this onClickListener doesn't execute
+                return@setOnClickListener
+            }
+
+            // advance our pointer index so we can show the next card
+            currentCardDisplayedIndex++
+
+            // make sure we don't get an IndexOutOfBoundsError if we are viewing the last indexed card in our list
+            if(currentCardDisplayedIndex >= allFlashcards.size) {
+                Snackbar.make(
+                    findViewById<TextView>(R.id.flashcard_question), // This should be the TextView for displaying your flashcard question
+                    "You've reached the end of the cards, going back to start.",
+                    Snackbar.LENGTH_SHORT)
+                    .show()
+                currentCardDisplayedIndex = 0
+
+            }
+
+            // set the question and answer TextViews with data from the database
+            allFlashcards = flashcardDatabase.getAllCards().toMutableList()
+            val (question, answer) = allFlashcards[currentCardDisplayedIndex]
+
+            findViewById<TextView>(R.id.flashcard_answer).text = answer
+            findViewById<TextView>(R.id.flashcard_question).text = question
+        }
+
 
 
 //        Show the answer nd hide the question
@@ -53,7 +106,23 @@ class MainActivity : AppCompatActivity() {
                 flashcard_answer.text = new_card_answer_1
 
 //                Affichage d'un snackbar pour donner du feeback a l'utilisateur
-                Snackbar.make(flashcard_question, "Card created succesfully", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(flashcard_question, "Card created successfully", Snackbar.LENGTH_SHORT).show()
+
+                try{
+//                Ajout sur dans la base de données de la nouvelle question et de sa réponse
+                    flashcardDatabase.insertCard(Flashcard(new_card_question.toString(), new_card_answer_1.toString()))
+                    allFlashcards = flashcardDatabase.getAllCards().toMutableList()
+
+//                Affichage d'un snackbar pour tester si db persistence failed
+                    Snackbar.make(flashcard_question, "Card successfully added to the database", Snackbar.LENGTH_SHORT).show()
+
+                }catch (ex:Exception){
+//                Affichage d'un snackbar pour tester si db persistence failed
+                    Snackbar.make(flashcard_question, "$ex", Snackbar.LENGTH_SHORT).show()
+                }
+
+
+
 
 
                 // Log the value of the strings for easier debugging
