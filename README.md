@@ -20,6 +20,22 @@ This Week we customized our app even more by allowing users to create their own 
 
 <img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240326_130820.gif" width=200><br>
 
+
+#### OPTIONAL TASKS
+
+- User can edit a card
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240326_145338.gif" width=200><br>
+
+- An error message is shown if the user doesn't enter both a Question and an Answer
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240326_145609.gif" width=200><br>
+
+- A notification is shown if the card was created successfully
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240326_145758.gif" width=200><br>
+
+
 ## Required
 - [x] User can click on a ‘+’ button that takes the user to new ‘Add Card Screen’
 - [x] The 'Add Card Screen' has a cancel button to take the user back to the main screen
@@ -28,9 +44,9 @@ This Week we customized our app even more by allowing users to create their own 
 - [x] Push your progress to GitHub!
 
 ## Optional
-- [ ] User can edit a card
-- [ ] An error message is shown if the user doesn't enter both a Question and an Answer
-- [ ] A notification is shown if the card was created successfully
+- [x] User can edit a card
+- [x] An error message is shown if the user doesn't enter both a Question and an Answer
+- [x] A notification is shown if the card was created successfully
 - [ ] User can also enter multiple choice answers when creating a card
 - [ ] App is further styled and customized!
 
