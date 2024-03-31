@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
 
     var allFlashcards = mutableListOf<Flashcard>()
 
+    var cardToDelete:Flashcard? = null //Might use this for the optional task of deleting a card
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,9 +33,9 @@ class MainActivity : AppCompatActivity() {
 
         var currentCardDisplayedIndex: Int = 0
 
+
         if (allFlashcards.size > 0) {
-            findViewById<TextView>(R.id.flashcard_question).text = allFlashcards[currentCardDisplayedIndex].question
-            findViewById<TextView>(R.id.flashcard_answer).text = allFlashcards[currentCardDisplayedIndex].answer
+            displayTheCards(currentCardDisplayedIndex)
         }
 
 
@@ -44,10 +46,53 @@ class MainActivity : AppCompatActivity() {
 
         val next_card_button = findViewById<View>(R.id.next_card_button)
 
+        val delete_card_button = findViewById<View>(R.id.delete_card_button)
+
+        delete_card_button.setOnClickListener {
+            //Delete the card
+            val flashcardToDeleteQuestion = flashcard_question.text.toString()
+
+            flashcardDatabase.deleteCard(flashcardToDeleteQuestion)
+            allFlashcards = flashcardDatabase.getAllCards().toMutableList()
+
+            //Update what we see
+            if(allFlashcards.isEmpty()){
+                //Dans ce cas il n'ya plus de card dans la base de donnees
+                Snackbar.make(
+                    findViewById<TextView>(R.id.flashcard_question), // This should be the TextView for displaying your flashcard question
+                    "There's no card in your database",
+                    Snackbar.LENGTH_SHORT)
+                    .show()
+                flashcard_question.text = "No card to show"
+            }
+            else{
+
+                if(currentCardDisplayedIndex + 1 >= allFlashcards.size){
+                    //Il y a des card dans la BDD mais nous sommes a la fin de la liste
+                    //Nous evitons d'etre Out of Bounds
+
+                    currentCardDisplayedIndex = 0
+                    displayTheCards(currentCardDisplayedIndex)
+                }
+                else{
+                    //Nous pouvons afficher le next card en utilisant le meme index car il a pris la place de celui d'avant
+
+                    displayTheCards(currentCardDisplayedIndex)
+                }
+
+
+            }
+        }
+
         next_card_button.setOnClickListener {
             // don't try to go to next card if you have no cards to begin with
-            if (allFlashcards.size == 0) {
+            if (allFlashcards.isEmpty()) {
                 // return here, so that the rest of the code in this onClickListener doesn't execute
+                Snackbar.make(
+                    findViewById<TextView>(R.id.flashcard_question), // This should be the TextView for displaying your flashcard question
+                    "No card in the database",
+                    Snackbar.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 
@@ -69,8 +114,8 @@ class MainActivity : AppCompatActivity() {
             allFlashcards = flashcardDatabase.getAllCards().toMutableList()
             val (question, answer) = allFlashcards[currentCardDisplayedIndex]
 
-            findViewById<TextView>(R.id.flashcard_answer).text = answer
-            findViewById<TextView>(R.id.flashcard_question).text = question
+            displayTheCards(currentCardDisplayedIndex)
+
         }
 
 
@@ -102,8 +147,8 @@ class MainActivity : AppCompatActivity() {
                 val new_card_answer_1 = data.getStringExtra("new_card_answer_1")
 
 //                Ajout sur l'écran de la nouvelle question et de sa réponse
-                flashcard_question.text = new_card_question
-                flashcard_answer.text = new_card_answer_1
+//                flashcard_question.text = new_card_question
+//                flashcard_answer.text = new_card_answer_1
 
 //                Affichage d'un snackbar pour donner du feeback a l'utilisateur
                 Snackbar.make(flashcard_question, "Card created successfully", Snackbar.LENGTH_SHORT).show()
@@ -112,6 +157,12 @@ class MainActivity : AppCompatActivity() {
 //                Ajout sur dans la base de données de la nouvelle question et de sa réponse
                     flashcardDatabase.insertCard(Flashcard(new_card_question.toString(), new_card_answer_1.toString()))
                     allFlashcards = flashcardDatabase.getAllCards().toMutableList()
+
+                    //update the current display index so we don't have a bug with the delete functionaity
+                    currentCardDisplayedIndex = allFlashcards.size - 1
+
+                    //                Ajout sur l'écran de la nouvelle question et de sa réponse
+                    displayTheCards(currentCardDisplayedIndex)
 
 //                Affichage d'un snackbar pour tester si db persistence failed
                     Snackbar.make(flashcard_question, "Card successfully added to the database", Snackbar.LENGTH_SHORT).show()
@@ -216,5 +267,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+
+    fun displayTheCards(currentIndex:Int){
+
+        findViewById<TextView>(R.id.flashcard_question).text = allFlashcards[currentIndex].question
+        findViewById<TextView>(R.id.flashcard_answer).text = allFlashcards[currentIndex].answer
+
+        //allFlashcards.size
     }
 }

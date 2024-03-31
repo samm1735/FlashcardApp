@@ -19,7 +19,7 @@
         android:id="@+id/flashcard_question"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:text="2 + 2 = ? "
+        android:text="No card to show"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:gravity="center"
@@ -33,7 +33,7 @@
         android:id="@+id/flashcard_answer"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:text="4"
+        android:text=""
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:gravity="center"
@@ -76,14 +76,21 @@
         android:layout_marginEnd="16dp"
         />
 
+    <ImageView
+        android:id="@+id/delete_card_button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/flashcard_question"
+        android:layout_alignParentEnd="true"
+
+        android:layout_centerVertical="true"
+
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="166dp"
+        android:src="@drawable/iconmonstr_trash_can_lined" />
 
 
-
-
-
-
-
-<!--    <RelativeLayout-->
+    <!--    <RelativeLayout-->
 <!--        android:id="@+id/flashcard_answers"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="350dp"-->
