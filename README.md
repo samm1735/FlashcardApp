@@ -1,5 +1,43 @@
 ## FlashcardApp
 
+## Lab 3
+
+### App Description
+An Android app for flashcards. Lab 2 in the "App Mobile" class @Universite Espoir de la Calvary Chapel.
+This Week we added database functionnality to our app so the user's flash cards get saved.
+
+### App Walk-though
+
+
+#### REQUIRED TASKS
+
+- User can create a card and it gets saved to the database.
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240331_150147.gif" width=200><br>
+
+- User can still see all their created cards when the app is relaunched
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240331_152932.gif" width=200><br>
+
+
+- User can create muliple cards and browse through all created cards
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240331_150004.gif" width=200><br>
+
+
+
+
+## Required
+- [x] User can create a card and still see their created card when the app is relaunched.
+- [x] User can create muliple cards and browse through all created cards
+
+## Optional
+- [ ] User can delete a card and no longer see it in their deck anymore
+- [ ] Flashcards are shown in random order instead of the order they were created in
+- [ ] User can edit a card and see the edit saved when they browse through their deck of cards
+- [ ] User can create flashcards with multiple answers and be able to browse through cards with multiple choice answers shown
+
+
 ## Lab 2
 
 ### App Description
