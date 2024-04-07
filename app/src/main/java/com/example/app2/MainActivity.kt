@@ -3,14 +3,20 @@ package com.example.app2
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewAnimationUtils
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import com.google.android.material.snackbar.Snackbar
+import kotlin.math.hypot
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+//    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -114,6 +121,20 @@ class MainActivity : AppCompatActivity() {
             allFlashcards = flashcardDatabase.getAllCards().toMutableList()
             val (question, answer) = allFlashcards[currentCardDisplayedIndex]
 
+            val leftOutAnim = AnimationUtils.loadAnimation(flashcard_question.getContext(), R.anim.left_out)
+            val rightInAnim = AnimationUtils.loadAnimation(flashcard_question.getContext(), R.anim.right_in)
+
+            leftOutAnim.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationStart(animation: Animation?) {}
+
+                override fun onAnimationEnd(animation: Animation?) {
+                    flashcard_question.startAnimation(rightInAnim)
+                }
+
+                override fun onAnimationRepeat(animation: Animation?) {}
+            })
+
+            flashcard_question.startAnimation(leftOutAnim)
             displayTheCards(currentCardDisplayedIndex)
 
         }
@@ -122,8 +143,31 @@ class MainActivity : AppCompatActivity() {
 
 //        Show the answer nd hide the question
         flashcard_question.setOnClickListener{
+
+
+
+            // get the center for the clipping circle
+            val cx = flashcard_answer.width / 2
+            val cy = flashcard_answer.height / 2
+
+            // get the final radius for the clipping circle
+            val finalRadius = hypot(cx.toDouble(), cy.toDouble()).toFloat()
+
+            // create the animator for this view (the start radius is zero)
+
+            val anim = ViewAnimationUtils.createCircularReveal(flashcard_answer, cx, cy, 0f, finalRadius)
+
+            // hide the question and show the answer to prepare for playing the animation
             flashcard_question.visibility = View.INVISIBLE
             flashcard_answer.visibility = View.VISIBLE
+
+
+
+            anim.duration = 3000
+            anim.start()
+
+
+
         }
 
 //        Show the question and hide hte answer
@@ -187,6 +231,10 @@ class MainActivity : AppCompatActivity() {
         add_card_button.setOnClickListener{
             val intent = Intent(this, AddCardActivity::class.java)
             resultLauncher.launch(intent)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                overrideActivityTransition(OVERRIDE_TRANSITION_OPEN, R.anim.right_in, R.anim.left_out)
+            }
 
         }
 
