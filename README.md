@@ -1,5 +1,46 @@
 ## FlashcardApp
 
+## Lab 4
+
+### App Description
+An Android app for flashcards. Lab 2 in the "App Mobile" class @Universite Espoir de la Calvary Chapel.
+This Week we added more styling and animation to our app so the user enjoys using it.
+
+### App Walk-though
+
+
+#### REQUIRED TASKS
+
+- App icon has been changed
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240408_135256.gif" width=200><br>
+
+- User sees a transition animation when going from the main screen to the add card screen.
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240408_135426.gif" width=200><br>
+
+- User sees a reveal animation when the flashcard is tapped and the answer is shown
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240408_135642.gif" width=200><br>
+
+- User sees flashcards animating in / out when the 'next' button is tapped
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240408_135738.gif" width=200><br>
+
+
+
+## Required
+- [x] User sees a transition animation when going from the main screen to the add card screen.
+- [x] User sees a reveal animation when the flashcard is tapped and the answer is shown
+- [x] User sees flashcards animating in / out when the 'next' button is tapped
+
+## Optional
+- [ ] Extra styling is added!
+- [ ] User sees a countdown timer for each question
+- [ ] User sees a 'card flip' animation when the card is tapped
+- [ ] User sees a celebration animation with confetti when they answer a question correctly
+
+
 ## Lab 3
 
 ### App Description
