@@ -25,6 +25,13 @@ This Week we added database functionnality to our app so the user's flash cards 
 <img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240331_150004.gif" width=200><br>
 
 
+#### OPTIONAL TASKS
+
+- User can delete a card and no longer see it in their deck anymore
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240331_175847.gif" width=200><br>
+
+
 
 
 ## Required
@@ -32,7 +39,7 @@ This Week we added database functionnality to our app so the user's flash cards 
 - [x] User can create muliple cards and browse through all created cards
 
 ## Optional
-- [ ] User can delete a card and no longer see it in their deck anymore
+- [x] User can delete a card and no longer see it in their deck anymore
 - [ ] Flashcards are shown in random order instead of the order they were created in
 - [ ] User can edit a card and see the edit saved when they browse through their deck of cards
 - [ ] User can create flashcards with multiple answers and be able to browse through cards with multiple choice answers shown
