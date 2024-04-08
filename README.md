@@ -28,6 +28,18 @@ This Week we added more styling and animation to our app so the user enjoys usin
 <img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240408_135738.gif" width=200><br>
 
 
+#### OPTIONAL TASKS
+
+- Extra styling was added : Margin, padding and the Question background was changed
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240408_161520.gif" width=200><br>
+
+- User can see a countdown timer in the end of which the next question is shown and the countdown reset
+
+<img src="https://github.com/samm1735/FlashcardApp/blob/main/Media_240408_161601.gif" width=200><br>
+
+
+
 
 ## Required
 - [x] User sees a transition animation when going from the main screen to the add card screen.
@@ -35,8 +47,8 @@ This Week we added more styling and animation to our app so the user enjoys usin
 - [x] User sees flashcards animating in / out when the 'next' button is tapped
 
 ## Optional
-- [ ] Extra styling is added!
-- [ ] User sees a countdown timer for each question
+- [x] Extra styling is added!
+- [x] User sees a countdown timer for each question
 - [ ] User sees a 'card flip' animation when the card is tapped
 - [ ] User sees a celebration animation with confetti when they answer a question correctly
 
