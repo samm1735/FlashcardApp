@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.view.ViewAnimationUtils
@@ -27,9 +28,11 @@ class MainActivity : AppCompatActivity() {
 
     var cardToDelete:Flashcard? = null //Might use this for the optional task of deleting a card
 
+    var countDownTimer: CountDownTimer? = null
 
 
-//    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+
+    //    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -42,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 
 
         if (allFlashcards.size > 0) {
+            startTimer()
             displayTheCards(currentCardDisplayedIndex)
         }
 
@@ -54,6 +58,21 @@ class MainActivity : AppCompatActivity() {
         val next_card_button = findViewById<View>(R.id.next_card_button)
 
         val delete_card_button = findViewById<View>(R.id.delete_card_button)
+
+        val flashcard_timer = findViewById<TextView>(R.id.flashcard_timer)
+
+
+        countDownTimer = object : CountDownTimer(16000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                flashcard_timer.text = (millisUntilFinished / 1000).toString()
+            }
+            override fun onFinish() {
+                next_card_button.performClick()
+            }
+        }
+
+
+
 
         delete_card_button.setOnClickListener {
             //Delete the card
@@ -322,6 +341,14 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.flashcard_question).text = allFlashcards[currentIndex].question
         findViewById<TextView>(R.id.flashcard_answer).text = allFlashcards[currentIndex].answer
 
+        startTimer()
+
         //allFlashcards.size
     }
+
+    private fun startTimer() {
+        countDownTimer?.cancel()
+        countDownTimer?.start()
+    }
+
 }
